@@ -47,9 +47,7 @@ nunjucks.configure('views', {
     express: app
 });
 var BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
-var BASE_URL_OMDB = 'http://www.omdbapi.com/?';
-var API_KEY_OMDB = process.env.API_KEY_OMDB;
-var API_KEY_MOVIEDB = process.env.API_KEY_MOVIEDB;
+var API_KEY = process.env.API_KEY_MOVIEDB;
 app.get('/', function (req, res) {
     res.render("home.html");
 });
@@ -61,7 +59,7 @@ app.get('/search', function (req, res) { return __awaiter(_this, void 0, void 0,
                 console.log("*********In response route*********");
                 console.log("req.query", req.query);
                 title = req.query.title;
-                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/search/movie?api_key=").concat(API_KEY_MOVIEDB, "&query=").concat(title))];
+                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/search/movie?api_key=").concat(API_KEY, "&query=").concat(title))];
             case 1:
                 result = _a.sent();
                 movies = result.data.results;
@@ -78,7 +76,7 @@ app.get('/moviedetail/:movieid', function (req, res) { return __awaiter(_this, v
                 console.log("*********In movie detail route*********");
                 console.log("req.params", req.params);
                 movieid = req.params.movieid;
-                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/movie/").concat(movieid.substring(1), "?api_key=").concat(API_KEY_MOVIEDB))];
+                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/movie/").concat(movieid.substring(1), "?api_key=").concat(API_KEY))];
             case 1:
                 result = _a.sent();
                 data = result.data;
@@ -90,4 +88,5 @@ app.get('/moviedetail/:movieid', function (req, res) { return __awaiter(_this, v
 // app.listen(3000, () => {
 //     console.log("Server listening on port 3000");
 // })
+//here is a change
 module.exports = app;

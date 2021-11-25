@@ -1,4 +1,5 @@
-const app = require("./app")
-app.listen(3000, function () {
-    console.log("Server listening on port 3000");
+var app = require("./app");
+var PORT = +process.env.PORT;
+app.listen(PORT, function () {
+    console.log("Server listening on http://localhost:".concat(PORT));
 });
