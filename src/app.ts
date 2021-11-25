@@ -26,7 +26,7 @@ interface ResultInterface {
 }
 
 app.get('/', (req, res) => {
-    res.render("./views/home.html");
+    res.render("home.html");
 })
 
 app.get('/search', async (req, res) => {
