@@ -1,3 +1,5 @@
+export{}
+
 const express = require("express");
 const nunjucks = require("nunjucks");
 const axios = require("axios");
@@ -32,8 +34,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', async (req, res) => {
-    console.log("*********In response route*********");
-    console.log("req.query", req.query);
     const {title} = req.query;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
     const movies: string = result.data.results;
@@ -41,21 +41,11 @@ app.get('/search', async (req, res) => {
 })
 
 app.get('/moviedetail/:movieid', async (req, res) => {
-    console.log("*********In movie detail route*********");
-    console.log("req.params", req.params);
     const {movieid} = req.params;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/movie/${movieid.substring(1)}?api_key=${API_KEY}`);
     let data = result.data;
     res.render("moviedetail.html", {data: data});
 })
-
-
-// app.listen(3000, () => {
-//     console.log("Server listening on port 3000");
-    
-// })
-
-//here is a change
 
 
 module.exports = app;
