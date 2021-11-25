@@ -47,9 +47,9 @@ nunjucks.configure('views', {
     express: app
 });
 var BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
-var API_KEY = process.env.API_KEY_MOVIEDB;
+var API_KEY = process.env.API_KEY;
 app.get('/', function (req, res) {
-    res.render("home.html");
+    res.render("./views/home.html");
 });
 app.get('/search', function (req, res) { return __awaiter(_this, void 0, void 0, function () {
     var title, result, movies;

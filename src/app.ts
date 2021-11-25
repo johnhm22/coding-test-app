@@ -17,7 +17,7 @@ const BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
 
 
 
-const API_KEY = process.env.API_KEY_MOVIEDB;
+const API_KEY = process.env.API_KEY;
 
 
 interface ResultInterface {
@@ -26,7 +26,7 @@ interface ResultInterface {
 }
 
 app.get('/', (req, res) => {
-    res.render("home.html");
+    res.render("./views/home.html");
 })
 
 app.get('/search', async (req, res) => {
