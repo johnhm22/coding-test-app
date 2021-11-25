@@ -1,3 +1,5 @@
+export{}
+
 const express = require("express");
 const nunjucks = require("nunjucks");
 const axios = require("axios");
@@ -47,12 +49,5 @@ app.get('/moviedetail/:movieid', async (req, res) => {
     let data = result.data;
     res.render("moviedetail.html", {data: data});
 })
-
-
-// app.listen(3000, () => {
-//     console.log("Server listening on port 3000");
-    
-// })
-
 
 module.exports = app;
