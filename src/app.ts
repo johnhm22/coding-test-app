@@ -8,10 +8,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-nunjucks.configure('views', {
+nunjucks.configure('./dist/views', {
     autoescape: true,
     express: app
 })
+
+
 
 const BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
 
