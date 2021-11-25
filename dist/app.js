@@ -53,20 +53,27 @@ app.get('/', function (req, res) {
     res.render("home.html");
 });
 app.get('/search', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var title, result, movies;
+    var title, result, movies, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                _a.trys.push([0, 2, , 3]);
                 console.log("*********In response route*********");
                 console.log("req.query", req.query);
                 title = req.query.title;
                 return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/search/movie?api_key=").concat(API_KEY, "&query=").concat(title))];
             case 1:
                 result = _a.sent();
-                console.log("result.data.results", result.data.results);
+                console.log("result.data", result.data);
                 movies = result.data.results;
                 res.render("movielist.html", { movies: movies });
-                return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 2:
+                e_1 = _a.sent();
+                console.log("You need to enter a search term");
+                res.render("home.html");
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });

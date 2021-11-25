@@ -32,13 +32,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', async (req, res) => {
+    try{
     console.log("*********In response route*********");
     console.log("req.query", req.query);
     const {title} = req.query;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
-    console.log("result.data.results", result.data.results);
+    console.log("result.data", result.data)
+    // console.log("result.data.results", result.data.results);
     const movies: string = result.data.results;
     res.render("movielist.html", {movies: movies});
+    }
+    catch(e){
+        console.log("You need to enter a search term")
+        res.render("home.html");
+    }
 })
 
 app.get('/moviedetail/:movieid', async (req, res) => {
