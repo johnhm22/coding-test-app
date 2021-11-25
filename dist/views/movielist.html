@@ -20,10 +20,10 @@
             <div class="col-6">
                 <ul>
                 {% for movie in movies %}
-                <li><a href="http://localhost:3000/moviedetail/:{{movie.id}}">{{ movie.original_title }}</a></li>
+                <li><a href="https://showmemovies.herokuapp.com/moviedetail/:{{movie.id}}">{{ movie.original_title }}</a></li>
                 {% endfor %}
                 </ul>
-                <a href="http://localhost:3000/" class="btn btn-primary btn-sm">Search again</a>
+                <a href="https://showmemovies.herokuapp.com/" class="btn btn-primary btn-sm">Search again</a>
             </div>
         </div>
     </div>
