@@ -34,11 +34,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', async (req, res) => {
+    try{
     const {title} = req.query;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
     const movies: string = result.data.results;
     res.render("movielist.html", {movies: movies});
+    }
+    catch(e){
+        res.render("home.html");
+    }
 })
+
 
 app.get('/moviedetail/:movieid', async (req, res) => {
     const {movieid} = req.params;
