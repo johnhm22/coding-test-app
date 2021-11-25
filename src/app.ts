@@ -17,7 +17,7 @@ const BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
 
 
 
-const API_KEY = process.env.API_KEY_MOVIEDB;
+const API_KEY = process.env.API_KEY;
 
 
 interface ResultInterface {
@@ -34,6 +34,7 @@ app.get('/search', async (req, res) => {
     console.log("req.query", req.query);
     const {title} = req.query;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
+    console.log("result.data.results", result.data.results);
     const movies: string = result.data.results;
     res.render("movielist.html", {movies: movies});
 })
