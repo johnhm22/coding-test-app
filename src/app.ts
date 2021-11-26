@@ -10,6 +10,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+
+//uncomment when running tests
+// nunjucks.configure('./dist/views', {
+//     autoescape: true,
+//     express: app
+// })
+
+//comment out when running tests
 nunjucks.configure('views', {
     autoescape: true,
     express: app
@@ -33,12 +41,8 @@ app.get('/', (req, res) => {
 
 app.get('/search', async (req, res) => {
     try{
-    console.log("*********In response route*********");
-    console.log("req.query", req.query);
     const {title} = req.query;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
-    console.log("result.data", result.data)
-    // console.log("result.data.results", result.data.results);
     const movies: string = result.data.results;
     res.render("movielist.html", {movies: movies});
     }
@@ -49,8 +53,6 @@ app.get('/search', async (req, res) => {
 })
 
 app.get('/moviedetail/:movieid', async (req, res) => {
-    console.log("*********In movie detail route*********");
-    console.log("req.params", req.params);
     const {movieid} = req.params;
     const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/movie/${movieid.substring(1)}?api_key=${API_KEY}`);
     let data = result.data;

@@ -43,6 +43,12 @@ require('dotenv').config();
 var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//uncomment when running tests
+// nunjucks.configure('./dist/views', {
+//     autoescape: true,
+//     express: app
+// })
+//comment out when running tests
 nunjucks.configure('views', {
     autoescape: true,
     express: app
@@ -58,13 +64,10 @@ app.get('/search', function (req, res) { return __awaiter(void 0, void 0, void 0
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                console.log("*********In response route*********");
-                console.log("req.query", req.query);
                 title = req.query.title;
                 return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/search/movie?api_key=").concat(API_KEY, "&query=").concat(title))];
             case 1:
                 result = _a.sent();
-                console.log("result.data", result.data);
                 movies = result.data.results;
                 res.render("movielist.html", { movies: movies });
                 return [3 /*break*/, 3];
@@ -82,8 +85,6 @@ app.get('/moviedetail/:movieid', function (req, res) { return __awaiter(void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("*********In movie detail route*********");
-                console.log("req.params", req.params);
                 movieid = req.params.movieid;
                 return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/movie/").concat(movieid.substring(1), "?api_key=").concat(API_KEY))];
             case 1:

@@ -1,6 +1,7 @@
 const request = require("supertest");
 const app = require("./app");
 
+//before running tests see line 14 in src/app.ts
 
 describe("GET /home", () => {
     it("Gets home page", async () => {
@@ -18,6 +19,10 @@ describe("GET /search", () => {
         .query({title: "Mission Impossible"})
         expect(res.statusCode).toBe(200);
         expect(typeof(res)).toBe('object');
-        // expect(res).toContain('Mission Impossible');
     });
 });
+
+
+
+
+
