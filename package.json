@@ -1,7 +1,7 @@
 {
   "name": "tivix",
   "version": "1.0.0",
-  "description": "Tivix coding test",
+  "description": "Coding test",
   "main": "server.js",
   "scripts": {
     "test": "jest"
