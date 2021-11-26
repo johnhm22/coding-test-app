@@ -11,13 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-//uncomment when running tests
-// nunjucks.configure('./dist/views', {
-//     autoescape: true,
-//     express: app
-// })
-
-//comment out when running tests
 nunjucks.configure('views', {
     autoescape: true,
     express: app

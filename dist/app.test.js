@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("./app");
 
-//before running tests see line 14 in src/app.ts
+//run tests in /dist directory using jest
 
 describe("GET /home", () => {
     it("Gets home page", async () => {
