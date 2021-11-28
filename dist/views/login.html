@@ -1,0 +1,27 @@
+           
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="container">
+    <h1 class="text-center mb-3 mt-3">We love movies</h1>
+    <h3 class="text-center mb-5 mt-3">Login</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-4 border shadow rounded p-4 mx-3 mx-md-0">
+            <form action="http://localhost:3000/users/login" method="POST">
+                <div class="form-group">
+                <label for="title">username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                <label for="title">password</label>
+                <input type="text" class="form-control" name="password" id="password" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}
