@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(session({secret: SECRET_KEY}));
 
 
-nunjucks.configure('views', {
+nunjucks.configure('./dist/views', {
     autoescape: true,
     express: app
 })
