@@ -11,7 +11,8 @@ password VARCHAR(25) NOT NULL,
 created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
                     
-CREATE TABLE faves (movie_id INTEGER PRIMARY KEY,
+CREATE TABLE faves (
+movie_id INTEGER PRIMARY KEY,
 movie_title TEXT,
-                    username TEXT NOT NULL REFERENCES users ON DELETE CASCADE
+username TEXT NOT NULL REFERENCES users ON DELETE CASCADE
 );
