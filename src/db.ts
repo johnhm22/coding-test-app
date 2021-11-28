@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 
-let DB_URI = process.env.DB_URI;
+let DB_URI = process.env.DATABASE_URL;
 
 // if(process.env.NODE_ENV === "test"){
 //     DB_URI = "postgresql:///mymovies_test";
