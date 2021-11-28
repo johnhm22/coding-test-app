@@ -5,7 +5,6 @@ const session = require("express-session");
 const nunjucks = require("nunjucks");
 const axios = require("axios");
 const db = require("./db");
-import * as $ from 'jquery';
 
 require('dotenv').config();
 
