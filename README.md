@@ -8,7 +8,6 @@ Simply put, it allows you to enter a search term for movies and see the results 
 
 That’s it!
 
-
 ### Tech framework  
 This is a backend app in the sense that the html pages are rendered by the backend server as opposed to a single page app approach using React or Angular. As you click from one page to another, each html is sent from the server.
 
