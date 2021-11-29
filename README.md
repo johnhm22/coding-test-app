@@ -27,8 +27,9 @@ The movie API was from:
 https://www.themoviedb.org/documentation/api
 
 ### Downloading the app files
-Create a folder on your own computer, ensuring it's not already a git repository. There is a green button at the top right of this repository called 'Code' which you gives you the option to clone, download a zip file, or open with GitHub desktop. Choosing 'clone', fetches everything and puts it in your folder.
-If you want to clone, copy the link and then run this command: 'git clone https://github.com/johnhm22/coding-test-app '
+Create a folder on your own computer, ensuring it's not already a git repository. There is a green button at the top right of this repository called 'Code' which you gives you the option to clone, download a zip file, or open with GitHub desktop. Choosing 'clone', fetches everything and puts it in your folder.  
+If you want to clone, copy the link and then run this command:  
+'git clone https://github.com/johnhm22/coding-test-app '.  
 You do, of course, have to create your own .env file to contain the secret key required by express session and the API key, which you get from the API provider.
 
 ### Setting up the database
