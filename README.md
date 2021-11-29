@@ -38,32 +38,30 @@ You'll need to install the database PostgreSQL and then set up the tables. There
 In the console, run 'npm init' in the root directory.
 
 ### Starting the server and running tests
-This I did by running nodemon server.js in the /dist directory which contains all the js files. I also ran jest from here.
-
-
+This I did by running 'nodemon server.js' in the /dist directory which contains all the js files. I also ran jest from here.
 
 ### Difficulties and challenges
-Prior to starting this development, I hadn’t used TypeScript before or Nunjucks, although, with regard to the latter, I was familiar with Jinja which is very similar. 
+Prior to starting this development, I hadn’t used TypeScript or Nunjucks before, although, with regard to the latter, I was familiar with Jinja which is very similar. 
 
 The basics of TypeScript I picked up by following this tutorial which is very good:  
 https://www.youtube.com/watch?v=gp5H0Vw39yw&list=LL&index=3&t=731s
 
-I struggled with getting the navbar to display certain links only when the user was logged in. Express Session was used to track if the user was logged in or not. The navbar was put into the base.html which was a base template for each html page. There was no specific route to call the base.html, and so the navbar, so adding a conditional in a route that calls the file was not possible. I will work this out.
+I struggled with customising the navbar links according to whether the user was logged in. Express Session was used to track if the user was logged in or not. The navbar was put into the base.html which was a base template for each html page. There was no specific route to call the base.html, and so the navbar, so adding a conditional in a route that calls the file was not possible. I will work this out.
 
 
 ### Things to do
 * Give names to the callbacks in the routes in order to identify exactly what they are doing
 * Create separate files for the routes rather than put them all in app.ts
 * Create object models for the sql queries so the routes call static methods on the model(s)
-* Add password encryption. I didn’t add this as it’s just a simple demo app, although it could be done quite easily using bcrypt.
+* Add password encryption. I didn’t add this as it was a simple demo app, although it could be done quite easily using bcrypt.
 * Learn more about TypeScript. I managed, but was unsure if the app could be run from the ./src directory where the ts files were located. It didn’t seem straight forward and in the end I stuck with what I knew and ran it from the ./dist folder where the js files were.
 * Work out how to customise the links on the navbar according to whether the user is logged in; it should be easy to do.
 
 
 ### Credits
-Finally, I have been helped tremendously in learning web development by the lectures of Colt Steele in his Udemy Web Development and JavaScript courses:  
+Finally, I have been helped tremendously in learning web development and coding by the lectures of Colt Steele in his Udemy Web Development and JavaScript courses:  
 https://www.udemy.com/course/the-web-developer-bootcamp  
 https://www.udemy.com/course/javascript-beginners-complete-tutorial
 
-and the Software Engineer Boot Camp course from Springboard:  
+and the Software Engineer Boot Camp course from Springboard, also by Colt:  
 https://www.springboard.com/courses/software-engineering-career-track/
