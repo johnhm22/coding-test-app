@@ -61,6 +61,7 @@ I struggled with customising the navbar links according to whether the user was 
 * Add password encryption. I didn’t add this as it was a simple demo app, although it could be done quite easily using bcrypt.
 * Learn more about TypeScript. I managed, but was unsure if the app could be run from the ./src directory where the ts files were located. It didn’t seem straight forward and in the end I stuck with what I knew and ran it from the ./dist folder where the js files were.
 * Work out how to customise the links on the navbar according to whether the user is logged in; it should be easy to do.
+* Many more tests
 
 
 ### Credits
