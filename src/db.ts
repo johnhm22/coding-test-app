@@ -9,7 +9,10 @@ let DB_URI = process.env.DATABASE_URL;
 // }
 
 let db = new Client({
-    connectionString: DB_URI
+    connectionString: DB_URI,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 db.connect();

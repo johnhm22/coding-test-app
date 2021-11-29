@@ -6,7 +6,10 @@ var DB_URI = process.env.DATABASE_URL;
 //     DB_URI = "postgresql:///mymovies";
 // }
 var db = new Client({
-    connectionString: DB_URI
+    connectionString: DB_URI,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 db.connect();
 module.exports = db;
