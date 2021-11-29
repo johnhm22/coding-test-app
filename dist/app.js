@@ -143,18 +143,23 @@ app.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void 0,
                 _a = req.params, movieid = _a.movieid, title = _a.title;
                 _b.label = 1;
             case 1:
-                _b.trys.push([1, 3, , 4]);
+                _b.trys.push([1, 5, , 6]);
+                if (!req.session.username) return [3 /*break*/, 3];
                 return [4 /*yield*/, db.query("INSERT INTO faves (movie_id, movie_title, username)\n                VALUES ($1, $2, $3)", [movieid, title, username])];
             case 2:
                 results = _b.sent();
                 res.render('home.html');
                 return [3 /*break*/, 4];
             case 3:
+                res.render('login.html');
+                _b.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
                 e_3 = _b.sent();
                 console.log("Error in adding fave details to db");
                 res.render('home.html');
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); });
@@ -166,7 +171,8 @@ app.get('/users/faves', function (req, res) { return __awaiter(void 0, void 0, v
                 username = req.session.username;
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 5, , 6]);
+                if (!req.session.username) return [3 /*break*/, 3];
                 return [4 /*yield*/, db.query("SELECT * FROM faves\n            WHERE username=$1", [username])];
             case 2:
                 results = _a.sent();
@@ -174,11 +180,15 @@ app.get('/users/faves', function (req, res) { return __awaiter(void 0, void 0, v
                 res.render('faves.html', { faves: faves });
                 return [3 /*break*/, 4];
             case 3:
+                res.render('login.html');
+                _a.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
                 e_4 = _a.sent();
                 console.log("Error in selecting faves from db");
                 res.render('home.html');
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); });
