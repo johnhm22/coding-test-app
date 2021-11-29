@@ -32,10 +32,12 @@ If you want to clone, copy the link and then run this command: 'git clone https:
 You do, of course, have to create your own .env file to contain the secret key required by express session and the API key, which you get from the API provider.
 
 ### Setting up the database
-You'll need to install the database PostgreSQL and then set up the tables. There is a script included here called schema.sql. It creates the database called mymovies; first dropping it if it already exists, creating it from new and creating tables. In the console, navigate to the same directory as the file schema.sql and then run the command: 'psql < schema.sql'.
-Installing dependencies
+You'll need to install the database PostgreSQL and then set up the tables. There is a script included here called schema.sql. It creates the database called mymovies; first dropping it if it already exists, creating it from new and then creating tables. In the console, navigate to the same directory as the file schema.sql and then run the command: 'psql < schema.sql'.
+
+### Installing dependencies
 In the console, run 'npm init' in the root directory.
-Starting the server and running tests
+
+### Starting the server and running tests
 This I did by running nodemon server.js in the /dist directory which contains all the js files. I also ran jest from here.
 
 
