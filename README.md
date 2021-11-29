@@ -8,6 +8,11 @@ Simply put, it allows you to enter a search term for movies and see the results 
 
 That’s it!
 
+### Branches on GitHub  
+The initial app was developed without any user account creation, favourites or database. This is the main branch. This was customised for deployment on Heroku.  
+Following this, further work was done to introduce the account and favourite movies features and this was saved under the local_faves branch. Again, this was customised for Heroku and called heroku_faves.
+
+
 ### Tech framework  
 This is a backend app in the sense that the html pages are rendered by the backend server as opposed to a single page app approach using React or Angular. As you click from one page to another, each html is sent from the server.
 
