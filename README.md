@@ -4,13 +4,13 @@
 This is a small app developed as an exercise set by a tech company that was interested in my profile.  Clearly, their objective was to get an understanding of my coding skills.  Overall, it was an enjoyable test and a useful learning opportunity.
 
 ### What does the app do?  
-Simply put, it allows you to enter a search term for movies and see the results provided by an API. You can then click on the movie title to see further details. There is the possibility of creating an account and so allowing you to save a list of favourite movies; these you can see from the “faves” link in the navbar. If you are not logged in and click on the faves link in the navbar or try to add a movie to the favourites list, the app returns you to the login page.
+Simply put, it allows you to enter a search term for movies and see the results provided by an API. You can then click on the movie title to see further details. The app offers the possibility of creating an account and so allowing the user to save a list of favourite movies; these can be seen by selecting the “faves” link in the navbar. If you are not logged in and click on the faves link in the navbar, or try to add a movie to the favourites list, the app returns you to the login page.
 
 That’s it!
 
 
 ### Tech framework  
-This is a backend app in the sense that the html pages are rendered by the backend server as opposed to a single page app approach with React or Angular. As you click from one page to another, each html is sent from the server.
+This is a backend app in the sense that the html pages are rendered by the backend server as opposed to a single page app approach using React or Angular. As you click from one page to another, each html is sent from the server.
 
 In terms of specific technologies, the app uses:
 * TypeScript
