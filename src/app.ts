@@ -124,13 +124,16 @@ app.get('/faves/:movieid/:title', async (req, res) => {
 app.get('/users/faves', async (req, res) => {
     const username = req.session.username;
     try{
+        if(req.session.username){
         const results = await db.query(
             `SELECT * FROM faves
             WHERE username=$1`,
             [username]);
         const faves = results.rows;
         res.render('faves.html', {faves: faves});
-
+        } else {
+            res.render('login.html');
+        }
     }
     catch(e){
         console.log("Error in selecting faves from db");
