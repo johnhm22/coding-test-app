@@ -84,7 +84,7 @@ app.post('/users/register', function (req, res) { return __awaiter(void 0, void 
             case 2:
                 e_1 = _b.sent();
                 console.log("There was an error when registering");
-                res.render('home.html');
+                res.render('register.html');
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -118,7 +118,7 @@ app.post('/users/login', function (req, res) { return __awaiter(void 0, void 0, 
                     res.render('home.html');
                 }
                 else {
-                    res.render('home.html');
+                    res.render('login.html');
                 }
                 return [3 /*break*/, 3];
             case 2:
