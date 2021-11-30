@@ -58,7 +58,7 @@ app.post('/users/register', async (req, res) => {
     }
     catch(e){
         console.log("There was an error when registering");
-        res.render('home.html');
+        res.render('register.html');
     }
 })
 
@@ -84,7 +84,7 @@ app.post('/users/login', async (req, res) => {
             req.session.username = username;
             res.render('home.html');
         } else{
-        res.render('home.html');
+        res.render('login.html');
         }
     }
     catch(e){
