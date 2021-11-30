@@ -6,9 +6,13 @@ const nunjucks = require("nunjucks");
 const axios = require("axios");
 const db = require("./db");
 
-require('dotenv').config();
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const {
+    API_KEY,
+    SECRET_KEY,
+    BASE_URL_MOVIEDB,
+} = require('./config');
+
 
 const app = express();
 app.use(express.json());
@@ -20,13 +24,6 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 })
-
-const BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
-
-
-
-const API_KEY = process.env.API_KEY;
-
 
 
 interface ResultInterface {

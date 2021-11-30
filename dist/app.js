@@ -41,8 +41,7 @@ var session = require("express-session");
 var nunjucks = require("nunjucks");
 var axios = require("axios");
 var db = require("./db");
-require('dotenv').config();
-var SECRET_KEY = process.env.SECRET_KEY;
+var _a = require('./config'), API_KEY = _a.API_KEY, SECRET_KEY = _a.SECRET_KEY, BASE_URL_MOVIEDB = _a.BASE_URL_MOVIEDB;
 var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -51,8 +50,6 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
-var BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
-var API_KEY = process.env.API_KEY;
 app.get('/', function (req, res) {
     res.render("home.html");
 });
