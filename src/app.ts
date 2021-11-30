@@ -5,7 +5,6 @@ const session = require("express-session");
 const nunjucks = require("nunjucks");
 const axios = require("axios");
 const db = require("./db");
-import * as $ from 'jquery';
 
 require('dotenv').config();
 
@@ -40,69 +39,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/faves/:movieid/:title', async (req, res) => {
-    let username = req.session.username;
-    const {movieid, title} = req.params;
-    try{
-        const results = await db.query(
-            `INSERT INTO faves (movie_id, movie_title, username)
-            VALUES ($1, $2, $3)`, 
-            [movieid, title, username]);
-        res.render('home.html');
-    }
-    catch(e){
-        console.log("Error in adding fave details to db");
-        res.render('home.html');
-    }
-})
-
-
-app.get('/users/faves', async (req, res) => {
-    const username = req.session.username;
-    try{
-        const results = await db.query(
-            `SELECT * FROM faves
-            WHERE username=$1`,
-            [username]);
-        const faves = results.rows;
-        res.render('faves.html', {faves: faves});
-
-    }
-    catch(e){
-        console.log("Error in selecting faves from db");
-        res.render('home.html');
-    }
-})
-
-
-app.get('/search', async (req, res) => {
-    try{
-    const {title} = req.query;
-    const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
-    const movies: string = result.data.results;
-    res.render("movielist.html", {movies: movies});
-    }
-
-    catch(e){
-        console.log("Error in providing list of movies");
-        res.render("home.html");
-    }
-})
-
-app.get('/movie/:movieid', async (req, res) => {
-    try{
-        const {movieid} = req.params;        
-        const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/movie/${movieid.substring(1)}?api_key=${API_KEY}`);        
-        let data = result.data;
-        res.render("moviedetail.html", {data: data});
-    }
-    catch(e){
-        console.log("Error in providing movie details");
-        res.render("home.html");
-    }
-})
-
-
 app.get('/users/register', async (req, res) => {
     try{
         res.render('register.html');
@@ -134,7 +70,7 @@ app.get('/users/login', async (req, res) => {
         console.log("There was an error when loading login page");
         res.render('home.html');
     }
-})
+});
 
 app.post('/users/login', async (req, res) => {
     try{
@@ -155,12 +91,77 @@ app.post('/users/login', async (req, res) => {
         console.log("There was an error when logging in");
         res.render('home.html');
     }
-})
+});
 
 
 app.get('/users/logout', (req, res) => {
     req.session.username = null;
     res.render('home.html');
-    })
+    });
+
+
+app.get('/faves/:movieid/:title', async (req, res) => {
+    let username = req.session.username;
+    const {movieid, title} = req.params;
+    try{
+        const results = await db.query(
+            `INSERT INTO faves (movie_id, movie_title, username)
+            VALUES ($1, $2, $3)`, 
+            [movieid, title, username]);
+        res.render('home.html');
+    }
+    catch(e){
+        console.log("Error in adding fave details to db");
+        res.render('home.html');
+    }
+});
+
+
+app.get('/users/faves', async (req, res) => {
+    const username = req.session.username;
+    try{
+        const results = await db.query(
+            `SELECT * FROM faves
+            WHERE username=$1`,
+            [username]);
+        const faves = results.rows;
+        res.render('faves.html', {faves: faves});
+
+    }
+    catch(e){
+        console.log("Error in selecting faves from db");
+        res.render('home.html');
+    }
+});
+
+
+app.get('/search', async (req, res) => {
+    try{
+    const {title} = req.query;
+    const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/search/movie?api_key=${API_KEY}&query=${title}`);
+    const movies: string = result.data.results;
+    res.render("movielist.html", {movies: movies});
+    }
+
+    catch(e){
+        console.log("Error in providing list of movies");
+        res.render("home.html");
+    }
+});
+
+
+app.get('/movie/:movieid', async (req, res) => {
+    try{
+        const {movieid} = req.params;        
+        const result: ResultInterface = await axios.get(`${BASE_URL_MOVIEDB}/movie/${movieid.substring(1)}?api_key=${API_KEY}`);        
+        let data = result.data;
+        res.render("moviedetail.html", {data: data});
+    }
+    catch(e){
+        console.log("Error in providing movie details");
+        res.render("home.html");
+    }
+});
+
 
 module.exports = app;
