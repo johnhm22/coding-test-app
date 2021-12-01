@@ -46,10 +46,7 @@ app.get('/users/register', async (req, res) => {
     }
 })
 
-<<<<<<< HEAD
-=======
 
->>>>>>> local_faves
 app.post('/users/register', async (req, res) => {
     try{
         const {username, password} = req.body;
@@ -64,21 +61,8 @@ app.post('/users/register', async (req, res) => {
 })
 
 
->>>>>>> local_faves
-app.get('/users/login', async (req, res) => {
-    try{
-        res.render('login.html');
-    }
-    catch(e){
-        console.log("There was an error when loading login page");
-        res.render('home.html');
-    }
-});
 
-<<<<<<< HEAD
-=======
 
->>>>>>> local_faves
 app.post('/users/login', async (req, res) => {
     try{
         const {username, password} = req.body;
@@ -176,11 +160,7 @@ app.get('/movie/:movieid', async (req, res) => {
         console.log("Error in providing movie details");
         res.render("home.html");
     }
-<<<<<<< HEAD
 });
-=======
-})
->>>>>>> local_faves
 
 
 module.exports = app;
