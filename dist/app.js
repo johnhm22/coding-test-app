@@ -50,6 +50,7 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+;
 app.get('/', function (req, res) {
     res.render("home.html");
 });
@@ -85,6 +86,18 @@ app.post('/users/register', function (req, res) { return __awaiter(void 0, void 
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
+    });
+}); });
+app.get('/users/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        try {
+            res.render('login.html');
+        }
+        catch (e) {
+            console.log("There was an error when loading login page");
+            res.render('home.html');
+        }
+        return [2 /*return*/];
     });
 }); });
 app.post('/users/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

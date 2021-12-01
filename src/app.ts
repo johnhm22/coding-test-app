@@ -23,17 +23,17 @@ app.use(session({secret: SECRET_KEY}));
 nunjucks.configure('views', {
     autoescape: true,
     express: app
-})
+});
 
 
 interface ResultInterface {
     data: string,
     results: string
-}
+};
 
 app.get('/', (req, res) => {
     res.render("home.html");
-})
+});
 
 
 app.get('/users/register', async (req, res) => {
@@ -44,7 +44,7 @@ app.get('/users/register', async (req, res) => {
         console.log("There was an error when loading register page");
         res.render('home.html');
     }
-})
+});
 
 
 app.post('/users/register', async (req, res) => {
@@ -58,9 +58,18 @@ app.post('/users/register', async (req, res) => {
         console.log("There was an error when registering");
         res.render('register.html');
     }
-})
+});
 
 
+app.get('/users/login', async (req, res) => {
+    try{
+        res.render('login.html');
+    }
+    catch(e){
+        console.log("There was an error when loading login page");
+        res.render('home.html');
+    }
+});
 
 
 app.post('/users/login', async (req, res) => {
