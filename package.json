@@ -12,11 +12,14 @@
     "@babel/preset-typescript": "^7.16.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@types/jest": "^27.0.3",
+    "@types/json-query": "^2.2.2",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "nodemon": "^2.0.15",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

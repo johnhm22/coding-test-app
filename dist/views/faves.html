@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    <div class="container">
+        <h2 class="text-center mb-3 mt-3">Here are your favourite movies</h2>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <ul>
+                {% for fave in faves %}
+                <li><a href="https://showmemovies2.herokuapp.com/movie/:{{fave.movie_id}}">{{ fave.movie_title }}</a></li>
+                {% endfor %}
+                </ul>
+                <a href="https://showmemovies2.herokuapp.com/" class="btn btn-primary btn-sm">Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
