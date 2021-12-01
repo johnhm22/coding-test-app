@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
-var app = require("./app");
-app.listen(3000, function () {
-    console.log("Server listening on port 3000");
+var app = require('./app');
+var PORT = require("./config").PORT;
+app.listen(PORT, function () {
+    console.log("Server listening on port ".concat(PORT));
 });

@@ -6,9 +6,13 @@ const nunjucks = require("nunjucks");
 const axios = require("axios");
 const db = require("./db");
 
-require('dotenv').config();
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const {
+    API_KEY,
+    SECRET_KEY,
+    BASE_URL_MOVIEDB,
+} = require('./config');
+
 
 const app = express();
 app.use(express.json());
@@ -20,13 +24,6 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 })
-
-const BASE_URL_MOVIEDB = 'https://api.themoviedb.org/3';
-
-
-
-const API_KEY = process.env.API_KEY;
-
 
 
 interface ResultInterface {
@@ -49,6 +46,10 @@ app.get('/users/register', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> local_faves
 app.post('/users/register', async (req, res) => {
     try{
         const {username, password} = req.body;
@@ -62,6 +63,10 @@ app.post('/users/register', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> local_faves
 app.get('/users/login', async (req, res) => {
     try{
         res.render('login.html');
@@ -72,6 +77,10 @@ app.get('/users/login', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> local_faves
 app.post('/users/login', async (req, res) => {
     try{
         const {username, password} = req.body;
@@ -116,7 +125,7 @@ app.get('/faves/:movieid/:title', async (req, res) => {
     }
     catch(e){
         console.log("Error in adding fave details to db");
-        res.render('home.html');
+        res.render('login.html');
     }
 });
 
@@ -157,6 +166,7 @@ app.get('/search', async (req, res) => {
 });
 
 
+
 app.get('/movie/:movieid', async (req, res) => {
     try{
         const {movieid} = req.params;        
@@ -168,7 +178,11 @@ app.get('/movie/:movieid', async (req, res) => {
         console.log("Error in providing movie details");
         res.render("home.html");
     }
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> local_faves
 
 
 module.exports = app;
