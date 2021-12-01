@@ -1,5 +1,5 @@
 {
-  "name": "tivix",
+  "name": "movies_app",
   "version": "1.0.0",
   "description": "Coding test",
   "main": "server.js",

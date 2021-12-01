@@ -207,24 +207,32 @@ app.get('/search', function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [3 /*break*/, 3];
             case 2:
                 e_5 = _a.sent();
+                console.log("Error in providing list of movies");
                 res.render("home.html");
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
-app.get('/moviedetail/:movieid', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var movieid, result, data;
+app.get('/movie/:movieid', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var movieid, result, data, e_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                _a.trys.push([0, 2, , 3]);
                 movieid = req.params.movieid;
                 return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/movie/").concat(movieid.substring(1), "?api_key=").concat(API_KEY))];
             case 1:
                 result = _a.sent();
                 data = result.data;
                 res.render("moviedetail.html", { data: data });
-                return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 2:
+                e_6 = _a.sent();
+                console.log("Error in providing movie details");
+                res.render("home.html");
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });
