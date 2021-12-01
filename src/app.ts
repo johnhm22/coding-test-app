@@ -63,8 +63,6 @@ app.post('/users/register', async (req, res) => {
     }
 })
 
-<<<<<<< HEAD
-=======
 
 >>>>>>> local_faves
 app.get('/users/login', async (req, res) => {

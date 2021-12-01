@@ -87,18 +87,6 @@ app.post('/users/register', function (req, res) { return __awaiter(void 0, void 
         }
     });
 }); });
-app.get('/users/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            res.render('login.html');
-        }
-        catch (e) {
-            console.log("There was an error when loading login page");
-            res.render('home.html');
-        }
-        return [2 /*return*/];
-    });
-}); });
 app.post('/users/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, username, password, results, user, e_2;
     return __generator(this, function (_b) {
