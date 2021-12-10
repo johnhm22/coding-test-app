@@ -36,27 +36,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var express = require("express");
-var session = require("express-session");
-var nunjucks = require("nunjucks");
-var db = require("./db");
-var userRoutes = require('./userRoutes');
-var movieRoutes = require('./movieRoutes');
-var SECRET_KEY = require('./config').SECRET_KEY;
-var app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: SECRET_KEY }));
-app.use('/users', userRoutes);
-app.use('/movies', movieRoutes);
-nunjucks.configure('views', {
-    autoescape: true,
-    express: app
-});
-app.get('/', function (req, res) {
-    res.render("home.html");
-});
-app.get('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var express = require('express');
+var router = new express.Router();
+router.get('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         try {
             res.render('register.html');
@@ -68,7 +50,7 @@ app.get('/register', function (req, res) { return __awaiter(void 0, void 0, void
         return [2 /*return*/];
     });
 }); });
-app.post('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.post('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, username, password, results, e_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -90,48 +72,4 @@ app.post('/register', function (req, res) { return __awaiter(void 0, void 0, voi
         }
     });
 }); });
-app.get('/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            res.render('login.html');
-        }
-        catch (e) {
-            console.log("There was an error when loading login page");
-            res.render('home.html');
-        }
-        return [2 /*return*/];
-    });
-}); });
-app.post('/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, results, user, e_2;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, username = _a.username, password = _a.password;
-                return [4 /*yield*/, db.query("SELECT * FROM users password\n            WHERE username = $1", [username])];
-            case 1:
-                results = _b.sent();
-                user = results.rows[0];
-                if (user.username) {
-                    req.session.username = username;
-                    res.render('home.html');
-                }
-                else {
-                    res.render('login.html');
-                }
-                return [3 /*break*/, 3];
-            case 2:
-                e_2 = _b.sent();
-                console.log("There was an error when logging in");
-                res.render('home.html');
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-app.get('/logout', function (req, res) {
-    req.session.username = null;
-    res.render('home.html');
-});
-module.exports = app;
+module.exports = router;

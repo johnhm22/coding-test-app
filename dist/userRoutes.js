@@ -39,82 +39,8 @@ exports.__esModule = true;
 var express = require('express');
 var router = new express.Router();
 var db = require("./db");
-router.get('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            res.render('register.html');
-        }
-        catch (e) {
-            console.log("There was an error when loading register page");
-            res.render('home.html');
-        }
-        return [2 /*return*/];
-    });
-}); });
-router.post('/register', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, results, e_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, username = _a.username, password = _a.password;
-                return [4 /*yield*/, db.query("INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *", [username, password])];
-            case 1:
-                results = _b.sent();
-                req.session.username = username;
-                res.render('home.html');
-                return [3 /*break*/, 3];
-            case 2:
-                e_1 = _b.sent();
-                console.log("There was an error when registering");
-                res.render('register.html');
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-router.get('/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            res.render('login.html');
-        }
-        catch (e) {
-            console.log("There was an error when loading login page");
-            res.render('home.html');
-        }
-        return [2 /*return*/];
-    });
-}); });
-router.post('/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, results, user, e_2;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, username = _a.username, password = _a.password;
-                return [4 /*yield*/, db.query("SELECT * FROM users password\n            WHERE username = $1", [username])];
-            case 1:
-                results = _b.sent();
-                user = results.rows[0];
-                if (user.username) {
-                    req.session.username = username;
-                    res.render('home.html');
-                }
-                else {
-                    res.render('login.html');
-                }
-                return [3 /*break*/, 3];
-            case 2:
-                e_2 = _b.sent();
-                console.log("There was an error when logging in");
-                res.render('home.html');
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
 router.get('/faves', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var username, results, faves, e_3;
+    var username, results, faves, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -134,7 +60,7 @@ router.get('/faves', function (req, res) { return __awaiter(void 0, void 0, void
                 _a.label = 4;
             case 4: return [3 /*break*/, 6];
             case 5:
-                e_3 = _a.sent();
+                e_1 = _a.sent();
                 console.log("Error in selecting faves from db");
                 res.render('home.html');
                 return [3 /*break*/, 6];
@@ -143,7 +69,7 @@ router.get('/faves', function (req, res) { return __awaiter(void 0, void 0, void
     });
 }); });
 router.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var username, _a, movieid, title, results, e_4;
+    var username, _a, movieid, title, results, e_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -163,7 +89,7 @@ router.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void
                 _b.label = 4;
             case 4: return [3 /*break*/, 6];
             case 5:
-                e_4 = _b.sent();
+                e_2 = _b.sent();
                 console.log("Error in adding fave details to db");
                 res.render('login.html');
                 return [3 /*break*/, 6];
@@ -171,8 +97,4 @@ router.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void
         }
     });
 }); });
-router.get('/logout', function (req, res) {
-    req.session.username = null;
-    res.render('home.html');
-});
 module.exports = router;
