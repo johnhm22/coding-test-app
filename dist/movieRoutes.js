@@ -36,53 +36,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var express = require("express");
-var session = require("express-session");
-var nunjucks = require("nunjucks");
-var db = require("./db");
-var userRoutes = require('./userRoutes');
-var movieRoutes = require('./movieRoutes');
-var SECRET_KEY = require('./config').SECRET_KEY;
-var app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: SECRET_KEY }));
-app.use('/users', userRoutes);
-app.use('/movies', movieRoutes);
-nunjucks.configure('views', {
-    autoescape: true,
-    express: app
-});
-app.get('/', function (req, res) {
-    res.render("home.html");
-});
-app.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var username, _a, movieid, title, results, e_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+var express = require('express');
+var router = new express.Router();
+var axios = require("axios");
+var _a = require('./config'), API_KEY = _a.API_KEY, BASE_URL_MOVIEDB = _a.BASE_URL_MOVIEDB;
+;
+router.get('/search', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var title, result, movies, e_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                username = req.session.username;
-                _a = req.params, movieid = _a.movieid, title = _a.title;
-                _b.label = 1;
+                _a.trys.push([0, 2, , 3]);
+                title = req.query.title;
+                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/search/movie?api_key=").concat(API_KEY, "&query=").concat(title))];
             case 1:
-                _b.trys.push([1, 5, , 6]);
-                if (!req.session.username) return [3 /*break*/, 3];
-                return [4 /*yield*/, db.query("INSERT INTO faves (movie_id, movie_title, username)\n            VALUES ($1, $2, $3)", [movieid, title, username])];
+                result = _a.sent();
+                movies = result.data.results;
+                res.render("movielist.html", { movies: movies });
+                return [3 /*break*/, 3];
             case 2:
-                results = _b.sent();
-                res.render('home.html');
-                return [3 /*break*/, 4];
-            case 3:
-                res.render('login.html');
-                _b.label = 4;
-            case 4: return [3 /*break*/, 6];
-            case 5:
-                e_1 = _b.sent();
-                console.log("Error in adding fave details to db");
-                res.render('login.html');
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
+                e_1 = _a.sent();
+                console.log("Error in providing list of movies");
+                res.render("home.html");
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });
-module.exports = app;
+router.get('/:movieid', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var movieid, result, data, e_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                movieid = req.params.movieid;
+                return [4 /*yield*/, axios.get("".concat(BASE_URL_MOVIEDB, "/movie/").concat(movieid.substring(1), "?api_key=").concat(API_KEY))];
+            case 1:
+                result = _a.sent();
+                data = result.data;
+                res.render("moviedetail.html", { data: data });
+                return [3 /*break*/, 3];
+            case 2:
+                e_2 = _a.sent();
+                console.log("Error in providing movie details");
+                res.render("home.html");
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+module.exports = router;

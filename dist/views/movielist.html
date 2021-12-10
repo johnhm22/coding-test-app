@@ -8,7 +8,7 @@
             <div class="col-6">
                 <ul>
                 {% for movie in movies %}
-                <li><a href="http://localhost:3000/movie/:{{movie.id}}">{{ movie.original_title }}</a></li>
+                <li><a href="http://localhost:3000/movies/:{{movie.id}}">{{ movie.original_title }}</a></li>
                 {% endfor %}
                 </ul>
                 <a href="http://localhost:3000/" class="btn btn-primary btn-sm">Search again</a>
