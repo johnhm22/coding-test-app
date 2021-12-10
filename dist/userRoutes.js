@@ -142,25 +142,35 @@ router.get('/faves', function (req, res) { return __awaiter(void 0, void 0, void
         }
     });
 }); });
-// router.get('/faves/:movieid/:title', async (req, res) => {
-//     let username = req.session.username;
-//     const {movieid, title} = req.params;
-//     try{
-//         if(req.session.username){
-//         const results = await db.query(
-//             `INSERT INTO faves (movie_id, movie_title, username)
-//             VALUES ($1, $2, $3)`, 
-//             [movieid, title, username]);
-//         res.render('home.html');
-//         } else {
-//             res.render('login.html');
-//         }
-//     }
-//     catch(e){
-//         console.log("Error in adding fave details to db");
-//         res.render('login.html');
-//     }
-// });
+router.get('/faves/:movieid/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var username, _a, movieid, title, results, e_4;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                username = req.session.username;
+                _a = req.params, movieid = _a.movieid, title = _a.title;
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 5, , 6]);
+                if (!req.session.username) return [3 /*break*/, 3];
+                return [4 /*yield*/, db.query("INSERT INTO faves (movie_id, movie_title, username)\n            VALUES ($1, $2, $3)", [movieid, title, username])];
+            case 2:
+                results = _b.sent();
+                res.render('home.html');
+                return [3 /*break*/, 4];
+            case 3:
+                res.render('login.html');
+                _b.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                e_4 = _b.sent();
+                console.log("Error in adding fave details to db");
+                res.render('login.html');
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
+        }
+    });
+}); });
 router.get('/logout', function (req, res) {
     req.session.username = null;
     res.render('home.html');

@@ -82,25 +82,27 @@ router.get('/faves', async (req, res) => {
     }
 });
 
-// router.get('/faves/:movieid/:title', async (req, res) => {
-//     let username = req.session.username;
-//     const {movieid, title} = req.params;
-//     try{
-//         if(req.session.username){
-//         const results = await db.query(
-//             `INSERT INTO faves (movie_id, movie_title, username)
-//             VALUES ($1, $2, $3)`, 
-//             [movieid, title, username]);
-//         res.render('home.html');
-//         } else {
-//             res.render('login.html');
-//         }
-//     }
-//     catch(e){
-//         console.log("Error in adding fave details to db");
-//         res.render('login.html');
-//     }
-// });
+
+router.get('/faves/:movieid/:title', async (req, res) => {
+    let username = req.session.username;
+    const {movieid, title} = req.params;
+    try{
+        if(req.session.username){
+        const results = await db.query(
+            `INSERT INTO faves (movie_id, movie_title, username)
+            VALUES ($1, $2, $3)`, 
+            [movieid, title, username]);
+        res.render('home.html');
+        } else {
+            res.render('login.html');
+        }
+    }
+    catch(e){
+        console.log("Error in adding fave details to db");
+        res.render('login.html');
+    }
+});
+
 
 
 router.get('/logout', (req, res) => {
