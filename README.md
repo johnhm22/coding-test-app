@@ -52,7 +52,7 @@ I struggled with customising the navbar links according to whether the user was 
 
 ### Things to do
 * Give names to the callbacks in the routes in order to identify exactly what they are doing
-* Create separate files for the routes rather than put them all in app.ts
+* Create separate files for the routes rather than put them all in app.ts (now done: separate files for user and movies related routes created. A nuber of routes have been left in app.ts)
 * Create object models for the sql queries so the routes call static methods on the model(s)
 * Add password encryption. I didn’t add this as it was a simple demo app, although it could be done quite easily using bcrypt.
 * Learn more about TypeScript. I managed, but was unsure if the app could be run from the ./src directory where the ts files were located. It didn’t seem straight forward and in the end I stuck with what I knew and ran it from the ./dist folder where the js files were.
