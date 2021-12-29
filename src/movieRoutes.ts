@@ -11,8 +11,10 @@ const {
 } = require('./config');
 
 interface ResultInterface {
-    data: string,
-    results: string
+    data: {
+        results: string;
+    }
+    results: string;
 };
 
 router.get('/search', async (req, res) => {
